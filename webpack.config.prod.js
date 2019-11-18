@@ -6,9 +6,9 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 module.exports = {
     ...config,
     entry: {
-        'common/appdownload': './src/common/appdownload',
-        'common/button': './src/common/button',
-        'components/button': './src/components/button',
+        'common/appdownload/index': './src/common/appdownload',
+        'common/button/index': './src/common/button',
+        'components/button/index': './src/components/button',
         'utils/i18n': './src/utils/i18n',
         'utils/tools': './src/utils/tools',
     },
@@ -42,7 +42,7 @@ module.exports = {
         new MiniCssExtractPlugin({
             // Options similar to the same options in webpackOptions.output
             // both options are optional
-            filename: "[name].[hash].css"
+            filename: "[name].css"
         }),
     ],
     optimization: {

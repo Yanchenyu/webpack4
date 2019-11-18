@@ -6,9 +6,9 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "cross-env NODE_ENV=development webpack-dev-server --progress --colors",
-    "build": "cross-env NODE_ENV=production webpack",
-    "babel": "babel src/common/appdownload/index.js"
+    "dev": "cross-env NODE_ENV=development webpack-dev-server --config webpack.config.dev.js --progress --colors",
+    "build": "cross-env NODE_ENV=production webpack --config webpack.config.prod.js",
+    "bundle-report": "webpack-bundle-analyzer --port 8123 dist/stats.json"
   },
   "repository": {
     "type": "git",
@@ -28,6 +28,7 @@
     "@babel/preset-env": "^7.7.1",
     "@babel/preset-react": "^7.7.0",
     "babel-loader": "^8.0.6",
+    "clean-webpack-plugin": "^3.0.0",
     "cross-env": "^6.0.3",
     "css-loader": "^3.2.0",
     "html-webpack-plugin": "^3.2.0",
@@ -36,6 +37,7 @@
     "react": "^16.11.0",
     "react-dom": "^16.11.0",
     "sass-loader": "^8.0.0",
+    "style-loader": "^1.0.0",
     "webpack": "^4.41.2",
     "webpack-bundle-analyzer": "^3.6.0",
     "webpack-cli": "^3.3.10",

@@ -5,6 +5,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const webpack = require('webpack');
 const TerserPlugin = require('terser-webpack-plugin');
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const mode = process.env.NODE_ENV;
 const devMode = mode !== 'production';
 
@@ -58,7 +59,8 @@ module.exports = {
             // both options are optional
             filename: devMode ? "[name].css" : "[name].[hash].css"
         }),
-        new webpack.HotModuleReplacementPlugin()
+        new webpack.HotModuleReplacementPlugin(),
+        new BundleAnalyzerPlugin()
     ],
     resolve: {
         alias: {

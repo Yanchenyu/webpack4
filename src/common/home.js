@@ -5,23 +5,23 @@ import Button from './button';
 
 class App extends Component {
     state = {
-        num: 0
+      num: 0
     }
     handleClick = () => {
-        this.setState({
-            num: this.state.num + 1
-        })
+      this.setState({
+        num: this.state.num + 1
+      });
     }
     render () {
-        return <div>
-            <Appdownload num={this.state.num} />
-            <Button handleClick={this.handleClick} />
-        </div>
+      return <div>
+        <Appdownload num={this.state.num} />
+        <Button handleClick={this.handleClick} />
+      </div>;
     }
 }
 
 
 render(
-    <App />,
-    document.getElementById('root')
-)
+  <App />,
+  document.getElementById('root')
+);

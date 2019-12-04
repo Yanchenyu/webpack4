@@ -1,14 +1,13 @@
 const config = require('./webpack.config.base');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const merge = require('webpack-merge');
 
-module.exports = {
-    ...config,
+module.exports = merge(config, {
     entry: {
         'common/home': './src/common/home'
     },
     module: {
         rules: [
-            ...config.module.rules,
             {
                 test: /\.(scss|css)$/,
                 use: [
@@ -24,6 +23,9 @@ module.exports = {
                         }
                     },
                     {
+                        loader: 'postcss-loader'
+                    },
+                    {
                         loader: 'sass-loader'
                     }
                 ]
@@ -33,11 +35,11 @@ module.exports = {
     plugins: [
         new HtmlWebpackPlugin({
             template: 'index.html'
-        }),
-        ...config.plugins,
+        })
     ],
     devServer: {
         hot: true,
-        port: 9999
+        port: 9999,
+        host: '127.0.0.1'
     },
-}
+});

@@ -3,38 +3,54 @@
 const path = require('path');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const webpack = require('webpack');
-const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+
+console.log('NODE_ENV: ', process.env.NODE_ENV);
 
 module.exports = {
     mode: process.env.NODE_ENV,
     output: {
         filename: '[name].js',
-        path: __dirname + '/dist'
+        path: __dirname + '/dist',
+        libraryTarget: 'umd'
     },
     module: {
         rules: [
+            {
+                enforce: 'pre',
+                test: /\.(js|jsx)$/,
+                exclude: /node_modules/,
+                use: {
+                    loader: 'eslint-loader',
+                    options: {
+                        fix: true
+                    }
+                }
+            },
             {
                 test: /\.(js|jsx)$/,
                 exclude: /node_modules/,
                 use: {
                     loader: 'babel-loader?cacheDirectory'
                 }
+            },
+            {
+                test: /\.(png|jpg|svg|gif|eot|otf|ttf|woff|woff2)$/,
+                use: [
+                    {
+                        loader: 'url-loader',
+                        options: {
+                            limit: 8192
+                        }
+                    }
+                ]
             }
         ]
     },
-    plugins: [
-        new webpack.HotModuleReplacementPlugin(),
-        new BundleAnalyzerPlugin({
-            analyzerMode: 'disabled',
-            generateStatsFile: true,
-            statsOptions: {
-                source: false
-            }
-        })
-    ],
+    plugins: [],
     resolve: {
         alias: {
-            Utils: path.resolve(__dirname, 'src/utils')
+            Utils: path.resolve(__dirname, 'src/utils'),
+            Styles: path.resolve(__dirname, 'src/style')
         },
         extensions: ['.js', '.jsx', '.ts', '.tsx', '.css', '.scss'],
         modules: [

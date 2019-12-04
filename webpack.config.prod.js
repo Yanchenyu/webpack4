@@ -2,19 +2,18 @@ const config = require('./webpack.config.base');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const merge = require('webpack-merge');
 
-module.exports = {
-    ...config,
+module.exports = merge(config, {
     entry: {
         'common/appdownload/index': './src/common/appdownload',
         'common/button/index': './src/common/button',
         'components/button/index': './src/components/button',
         'utils/i18n': './src/utils/i18n',
-        'utils/tools': './src/utils/tools',
+        // 'utils/tools': './src/utils/tools',
     },
     module: {
         rules: [
-            ...config.module.rules,
             {
                 test: /\.(scss|css)$/,
                 use: [
@@ -30,6 +29,9 @@ module.exports = {
                         }
                     },
                     {
+                        loader: 'postcss-loader'
+                    },
+                    {
                         loader: 'sass-loader'
                     }
                 ]
@@ -38,7 +40,6 @@ module.exports = {
     },
     plugins: [
         new CleanWebpackPlugin(),
-        ...config.plugins,
         new MiniCssExtractPlugin({
             // Options similar to the same options in webpackOptions.output
             // both options are optional
@@ -54,4 +55,4 @@ module.exports = {
           }),
         ],
     }
-}
+});

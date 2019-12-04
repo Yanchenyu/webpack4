@@ -1,1 +1,3 @@
-export const i18n = '123';
+import { add } from './tools';
+
+export const i18n = add(1, 2);

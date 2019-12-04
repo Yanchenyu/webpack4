@@ -11,7 +11,7 @@ module.exports = {
     output: {
         filename: '[name].js',
         path: __dirname + '/dist',
-        libraryTarget: 'umd'
+        libraryTarget: 'umd'    // 这里不写，导出的组件库将无法调用
     },
     module: {
         rules: [
@@ -50,7 +50,8 @@ module.exports = {
     resolve: {
         alias: {
             Utils: path.resolve(__dirname, 'src/utils'),
-            Styles: path.resolve(__dirname, 'src/style')
+            Styles: path.resolve(__dirname, 'src/style'),
+            Dist: path.resolve(__dirname, 'dist')
         },
         extensions: ['.js', '.jsx', '.ts', '.tsx', '.css', '.scss'],
         modules: [

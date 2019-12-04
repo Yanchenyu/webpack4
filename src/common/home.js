@@ -3,6 +3,10 @@ import { render } from 'react-dom';
 import Appdownload from './appdownload';
 import Button from './button';
 
+import { add } from 'Dist/utils/tools';
+
+console.log("add: ", add);
+
 class App extends Component {
     state = {
       num: 0

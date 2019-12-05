@@ -6,8 +6,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "cross-env NODE_ENV=development webpack-dev-server --config webpack.config.dev.js --progress --colors",
-    "build": "cross-env NODE_ENV=production webpack --config webpack.config.prod.js",
+    "dev": "cross-env NODE_ENV=development webpack-dev-server --config config/webpack.config.dev.js --progress --colors",
+    "build": "cross-env NODE_ENV=production webpack --config config/webpack.config.prod.js",
     "bundle-report": "webpack-bundle-analyzer --port 8123 dist/stats.json",
     "reset": "rm -rf node_modules package-lock.json && sudo npm i"
   },

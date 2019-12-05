@@ -10,7 +10,7 @@ module.exports = merge(config, {
         'common/button/index': './src/common/button',
         'components/button/index': './src/components/button',
         'utils/i18n': './src/utils/i18n',
-        'utils/tools': './src/utils/tools',
+        // 'utils/tools': './src/utils/tools',
     },
     module: {
         rules: [

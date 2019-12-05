@@ -1,3 +1,3 @@
-import { add } from './tools';
+import { add, numbera } from './tools';
 
-export const i18n = add(1, 2);
+export const i18n = add(1, numbera);
